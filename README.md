@@ -7,12 +7,6 @@
 The following document describes the requirements, resources and expectations related
 to the task for the JavaScript Engineer role.
 
-**Please read it carefully to better understand what we are asking for and
-what we expect from you.
-After you done please share the codesandbox link to whom in may concern.
-Should you have any question after reading this document, please do not
-hesitate to contact us.**
-
 # Requirements
 
 The application must meet the following requirements:
