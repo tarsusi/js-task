@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { Index } from './views/cars/Index';
+import App from './views/App';
 import '../server';
 
 import './styles/main.scss';
 
-render(<Index />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));

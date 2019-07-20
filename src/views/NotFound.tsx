@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 const NotFound = () => {
-	return <main>Not Found</main>;
+	return <div className="not-found-container">Not Found</div>;
 };
 
 export default NotFound;

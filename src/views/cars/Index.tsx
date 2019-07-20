@@ -1,19 +1,17 @@
 import * as React from 'react';
 import axios from 'axios';
-import Header from '../layout/header/Header';
-import Footer from '../layout/footer/Footer';
 import List from '../layout/List';
 import NavFilter from '../layout/NavFilter';
+import { Link } from 'react-router-dom';
 
-export const Index = () => {
+const Index = () => {
 	return (
-		<>
-			<Header />
-			<main>
-				<NavFilter />
-				<List />
-			</main>
-			<Footer />
-		</>
+		<div className="car-index-container">
+			<NavFilter />
+			<List />
+			<Link to="/1/detail">Show</Link>
+		</div>
 	);
 };
+
+export default Index;
