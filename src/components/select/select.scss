@@ -1,0 +1,19 @@
+.select-wrapper {
+    display: inline-flex;
+    align-items: center;
+
+    width: $select-width - 2;
+    height: $select-height - 2;
+
+    background-color: inherit;
+    border-radius: $border-radius;
+    border: 1px solid $gray;
+
+    cursor: pointer;
+
+    .select-title {
+        padding: 0 $padding-small;
+
+        @include font-family(regular, medium);
+    }
+ }
