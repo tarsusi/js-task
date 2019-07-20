@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import Header from '../layout/Header';
-import Footer from '../layout/Footer';
+import Footer from '../layout/footer/Footer';
 
 const Show = () => {
 	return (
