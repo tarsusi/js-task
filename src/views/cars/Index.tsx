@@ -1,6 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
-import Header from '../layout/Header';
+import Header from '../layout/header/Header';
 import Footer from '../layout/footer/Footer';
 import List from '../layout/List';
 import NavFilter from '../layout/NavFilter';

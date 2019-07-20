@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: $header-height;
+
+    padding: 0 $padding-large;
+
+    .header-nav {
+        display: flex;
+
+        .nav-item {
+            @include font-family(regular, medium);
+
+            cursor: pointer;
+
+            &:not(:last-child) {
+                margin-right: $margin-large;
+             }
+        }
+    }
+}
