@@ -22,8 +22,8 @@ const Header = () => {
 		<header>
 			<AppLogo />
 			<ul className="header-nav">
-				// TODO replace these links with Router Link components
-				{navLinks.map((navLink) => (
+				{// TODO replace these links with Router Link components
+				navLinks.map((navLink) => (
 					<li className="nav-item">
 						<span>{navLink.label}</span>
 					</li>
