@@ -1,0 +1,25 @@
+button {
+    height: $button-height;
+    width: $button-width;
+
+    background-color: $orange;
+    color: $gray;
+
+    &:hover {
+        background-color: $orange-secondary;
+    }
+
+    &:active { // click effect
+        filter: saturate(150%);
+        transform: translateY(1px);
+    }
+
+    &::-moz-focus-inner {
+        border: none;
+    }
+
+    border-radius: $border-radius;
+
+    @include font-family(regular, medium);
+    transition: all 0.3s ease;
+}
