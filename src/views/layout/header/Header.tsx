@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AppLogo from '../../../components/AppLogo';
+import AppLogo from '../../../components/app-logo/AppLogo';
 import INavLink from '../../../common/types/INavLink';
 
 const navLinks: INavLink[] = [
