@@ -1,19 +1,88 @@
 .select-wrapper {
+    position: relative;
+
     display: inline-flex;
     align-items: center;
 
-    width: $select-width - 2;
-    height: $select-height - 2;
+    width: $select-width - (2 * $border-width);
+    height: $select-height - (2 * $border-width);
 
-    background-color: inherit;
+    border: $border-width solid $gray;
     border-radius: $border-radius;
-    border: 1px solid $gray;
 
     cursor: pointer;
 
-    .select-title {
+    .select-header {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: space-between;
+
         padding: 0 $padding-small;
 
-        @include font-family(regular, medium);
+        .select-title {
+            @include font-family(regular, medium);
+        }
+
+        .select-triangle {
+            height: 0;
+            width: 0;
+
+            border-top: 10px solid $gray;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+
+            &.open {
+                transform: rotate(180deg);
+            }
+
+            transition: all 0.3s ease;
+        }
+    }
+
+    .select-option-list {
+        position: absolute;
+        top: $select-height + $padding-medium;
+
+        max-height: 215px;
+
+        background-color: $white;
+        border: 1px solid $gray;
+
+        overflow-y: auto;
+        z-index: 10;
+        -webkit-overflow-scrolling: touch;
+
+        .select-option-item-wrapper {
+            display: flex;
+            align-items: center;
+
+            height: $select-height - $border-width;
+            width: $select-width - (2 * $border-width);
+
+            cursor: pointer;
+
+            @include font-family(regular, medium);
+
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: $orange;
+                color: $white;
+             }
+
+            &.selected {
+                background-color: $orange-secondary;
+                color: $white;
+             }
+
+            &:not(:last-child) {
+                border-bottom: $border-width solid $gray;
+             }
+
+            .select-option-item {
+                padding: 0 $padding-small;
+             }
+        }
     }
  }
