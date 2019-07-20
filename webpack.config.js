@@ -19,7 +19,7 @@ module.exports = {
 		}),
 	],
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js', '.jsx'],
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
 	},
 	module: {
 		rules: [{ test: /\.tsx?$/, loader: 'ts-loader' }],
