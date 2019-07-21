@@ -1,16 +1,42 @@
 import * as React from 'react';
-import List from '../layout/List';
+import List from '../layout/list/List';
 import NavFilter from '../layout/nav-filter/NavFilter';
-import { Link } from 'react-router-dom';
+import ICar from '../../common/types/models/ICar';
+import { getCars } from '../../services/carApi';
 
-const Index = () => {
-	return (
-		<div className="car-index-container">
-			<NavFilter onFiltered={console.log} />
-			<List />
-			<Link to="/1/detail">Show</Link>
-		</div>
-	);
-};
+interface Props {}
+
+interface State {
+	cars: ICar[];
+}
+
+class Index extends React.Component<Props, State> {
+	state = {
+		cars: [],
+	};
+
+	componentDidMount() {
+		this.getCars();
+	}
+
+	getCars = async () => {
+		const cars = await getCars();
+
+		if (cars && cars.length) {
+			this.setState({
+				cars,
+			});
+		}
+	};
+
+	render() {
+		return (
+			<div className="car-index-container">
+				<NavFilter onFiltered={console.log} />
+				<List cars={this.state.cars} />
+			</div>
+		);
+	}
+}
 
 export default Index;

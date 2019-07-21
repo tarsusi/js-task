@@ -4,10 +4,11 @@ import { Props as ShowProps, State as ShowState } from '../../../common/types/vi
 
 import { getCarDetails } from '../../../services/carApi';
 
-import { CAR_FEATURES_SEPARATOR } from '../../../common/constants/generalConstants';
 import { HOME_PAGE } from '../../../common/constants/routeNames';
 
 import Button from '../../../components/button/Button';
+
+import { generateCarFeatures, generateCarName } from '../../../utils/carUtils';
 
 class Show extends React.Component<ShowProps, ShowState> {
 	constructor(props: ShowProps) {
@@ -45,52 +46,11 @@ class Show extends React.Component<ShowProps, ShowState> {
 		}
 	};
 
-	generateCarName = (): string => {
-		const { car } = this.state;
-
-		if (car !== null) {
-			if (car.manufacturerName && car.modelName) {
-				return `${car.manufacturerName} ${car.modelName}`;
-			}
-
-			if (car.manufacturerName) {
-				return car.manufacturerName;
-			}
-		}
-
-		return '';
-	};
-
-	generateCarFeatures = (): string => {
-		const { car } = this.state;
-		const features = [];
-
-		if (car) {
-			if (car.stockNumber >= 0) {
-				features.push(`Stock # ${car.stockNumber}`);
-			}
-
-			if (car.mileage && car.mileage.number && car.mileage.number >= 0 && car.mileage.unit) {
-				features.push(`${car.mileage.number} ${car.mileage.unit}`);
-			}
-
-			if (car.fuelType) {
-				features.push(car.fuelType);
-			}
-
-			if (car.color) {
-				features.push(car.color);
-			}
-		}
-
-		return features.join(CAR_FEATURES_SEPARATOR);
-	};
-
 	render() {
 		const { car } = this.state;
 
-		const carName = this.generateCarName();
-		const carFeatures = this.generateCarFeatures();
+		const carName = generateCarName(car);
+		const carFeatures = generateCarFeatures(car);
 
 		return (
 			car && (

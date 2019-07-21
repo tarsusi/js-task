@@ -1,15 +1,16 @@
 @import "./base/index";
 @import "./core/index";
 
-@import "../views/page/page.scss";
-@import "../views/layout/footer/footer.scss";
-@import "../views/layout/header/header.scss";
-@import "../views/layout/nav-filter/nav-filter.scss";
-
 @import "../components/app-link/app-link.scss";
 @import "../components/button/button.scss";
 @import "../components/select/select.scss";
 @import "../components/pagination/pagination.scss";
+
+@import "../views/page/page.scss";
+@import "../views/layout/footer/footer.scss";
+@import "../views/layout/header/header.scss";
+@import "../views/layout/nav-filter/nav-filter.scss";
+@import "../views/layout/list/list.scss";
 
 @import "../views/cars/show/show.scss";
 @import "../views/not-found/not-found.scss";

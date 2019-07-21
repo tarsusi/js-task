@@ -1,0 +1,41 @@
+.car-list-container {
+    display: flex;
+    flex-direction: column;
+
+    .car-list-item-wrapper {
+        display: flex;
+
+        margin-bottom: $margin-medium;
+        padding: $padding-medium;
+
+        border: $border-width solid $gray;
+        border-radius: $border-radius;
+
+        .car-picture-container {
+            width: 80px;
+
+            .car-picture {
+                width: 100%
+            }
+        }
+
+        .car-list-item-container {
+            display: flex;
+            flex-direction: column;
+
+            margin-left: $margin-large;
+            
+            .car-list-item-name {
+                margin-bottom: $margin-small;
+
+                @include font-family(bold, large);
+            }
+
+            .car-list-item-features {
+                margin-bottom: $margin-small;
+
+                @include font-family(regular, medium);
+            }
+        }
+    }
+}

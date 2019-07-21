@@ -9,3 +9,13 @@ export const getCarDetails = async (id: string) => {
 
 	return null;
 };
+
+export const getCars = async () => {
+	const apiResult = await get(`/api/cars`);
+
+	if (apiResult.success) {
+		return apiResult.data.cars;
+	}
+
+	return [];
+};
