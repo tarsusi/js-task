@@ -1,0 +1,28 @@
+.pagination-container {
+    display: flex;
+
+    .pagination-link {
+        margin: 0 $margin-medium;
+
+        color: $orange;
+
+        cursor: pointer;
+
+        @include font-family(regalar, small);
+
+        &:hover {
+            color: $orange-secondary;
+            text-decoration: underline;
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    .pagination-pager {
+        margin: 0 $margin-medium;
+
+        @include font-family(regalar, small);
+    }
+}
