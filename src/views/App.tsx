@@ -6,7 +6,7 @@ import Page from './page/Page';
 
 import Home from './cars/Index';
 import Show from './cars/Show';
-import NotFound from './NotFound';
+import NotFound from './not-found/NotFound';
 
 const App = () => {
 	return (

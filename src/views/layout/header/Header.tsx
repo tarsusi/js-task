@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AppLogo from '../../../components/app-logo/AppLogo';
-import INavLink from '../../../common/types/INavLink';
+import INavLink from '../../../common/types/components/INavLink';
 
 const navLinks: INavLink[] = [
 	{

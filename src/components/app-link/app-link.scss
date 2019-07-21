@@ -1,0 +1,21 @@
+.app-link {
+    color: $orange;
+
+    @include font-family(regular, medium);
+
+    &.small {
+        @include font-family(regular, small);
+    }
+
+    &.large {
+        @include font-family(regular, large);
+    }
+
+    text-decoration: none;
+
+    &:hover {
+        color: $orange-secondary;
+
+        text-decoration: underline;
+    }
+}

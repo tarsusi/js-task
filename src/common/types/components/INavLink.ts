@@ -1,4 +1,6 @@
 export default interface INavLink {
 	label: string;
-	to?: string;
+	large?: boolean;
+	small?: boolean;
+	to: string;
 }
