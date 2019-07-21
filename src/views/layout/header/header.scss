@@ -7,6 +7,10 @@ header {
 
     padding: 0 $padding-large;
 
+    .home-page-logo {
+        cursor: pointer;
+    }
+
     .header-nav {
         display: flex;
 

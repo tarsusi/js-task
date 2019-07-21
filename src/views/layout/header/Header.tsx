@@ -1,6 +1,10 @@
 import * as React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
+
 import AppLogo from '../../../components/app-logo/AppLogo';
+
 import INavLink from '../../../common/types/components/INavLink';
+import { HOME_PAGE } from '../../../common/constants/routeNames';
 
 const navLinks: INavLink[] = [
 	{
@@ -17,14 +21,21 @@ const navLinks: INavLink[] = [
 	},
 ];
 
-const Header = () => {
+const Header = (props: RouteComponentProps) => {
 	return (
 		<header>
-			<AppLogo />
+			<AppLogo
+				className="home-page-logo"
+				onClick={() => {
+					if (props.location.pathname !== HOME_PAGE) {
+						props.history.push(HOME_PAGE);
+					}
+				}}
+			/>
 			<ul className="header-nav">
 				{// TODO replace these links with Router Link components
 				navLinks.map((navLink) => (
-					<li className="nav-item">
+					<li className="nav-item" key={navLink.label}>
 						<span>{navLink.label}</span>
 					</li>
 				))}
@@ -33,4 +44,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default withRouter(Header);
