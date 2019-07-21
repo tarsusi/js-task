@@ -4,6 +4,7 @@ export interface ISelectItem {
 }
 
 export interface ISelectProps {
+	className?: string;
 	items: ISelectItem[];
 	onSelect(item: ISelectItem): any;
 	placeholder?: string;

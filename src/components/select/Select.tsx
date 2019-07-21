@@ -65,7 +65,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
 
 	render() {
 		return (
-			<div className="select-wrapper" onClick={this.toggleSelect}>
+			<div className={classnames('select-wrapper', this.props.className)} onClick={this.toggleSelect}>
 				<div className="select-header">
 					<div className="select-title">{this.state.selectedItem || this.props.placeholder}</div>
 					<div

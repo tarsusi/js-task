@@ -1,13 +1,12 @@
 import * as React from 'react';
-import axios from 'axios';
 import List from '../layout/List';
-import NavFilter from '../layout/NavFilter';
+import NavFilter from '../layout/nav-filter/NavFilter';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
 	return (
 		<div className="car-index-container">
-			<NavFilter />
+			<NavFilter onFiltered={console.log} />
 			<List />
 			<Link to="/1/detail">Show</Link>
 		</div>

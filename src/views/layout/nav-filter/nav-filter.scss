@@ -1,0 +1,23 @@
+.nav-filter-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: $padding-large;
+
+    border: $border-width solid $gray;
+    border-radius: $border-radius;
+
+    .nav-filter-label {
+        @include font-family(regular, medium);
+    }
+
+    .nav-filter-select {
+        margin: $margin-medium 0;
+    }
+
+    .nav-filter-button {
+        align-self: flex-end;
+
+        margin-top: $margin-medium;
+    }
+}
