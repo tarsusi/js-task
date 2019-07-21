@@ -1,0 +1,79 @@
+.car-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    .car-picture-container {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+
+        background-color: $gray;
+
+        .car-picture {
+            margin: $margin-large;
+        }
+    }
+
+    .car-details-wrapper {
+        display: flex;
+
+        max-width: $show-view-wrapper-width;
+
+        padding: $padding-large;
+
+        .car-details {
+            display: flex;
+            flex: 1 0 0;
+        }
+
+        .car-details {
+            display: flex;
+            flex-direction: column;
+            flex: 2 0 0;
+
+            .car-details-name {
+                margin-bottom: $margin-large;
+
+                @include font-family(bold, x-large);
+            }
+
+            .car-details-features {
+                margin-bottom: $margin-large;
+
+                @include font-family(regular, large);
+            }
+
+            .car-details-available-message {
+                @include font-family(regular, medium);
+                line-height: $line-height;
+            }
+        }
+
+        .car-save-to-favourite-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1 0 0;
+
+            padding: $padding-large;
+
+            border: $border-width solid $gray;
+            border-radius: $border-radius;
+
+            
+            .car-save-to-favourite-message {
+                @include font-family(regular, medium);
+                line-height: $line-height;
+            }
+
+            .car-save-to-favourite-button {
+                align-self: flex-end;
+                margin-top: $margin-small;
+            }
+        }
+    }
+}

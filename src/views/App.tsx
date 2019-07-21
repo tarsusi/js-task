@@ -5,7 +5,7 @@ import { HOME_PAGE, SHOW_PAGE, NOT_FOUND_PAGE } from '../common/constants/routeN
 import Page from './page/Page';
 
 import Home from './cars/Index';
-import Show from './cars/Show';
+import Show from './cars/show/Show';
 import NotFound from './not-found/NotFound';
 
 const App = () => {

@@ -7,6 +7,9 @@ $font-size-medium: 14px;
 $font-size-large: 18px;
 $font-size-x-large: 32px;
 
+// Line Height
+$line-height: 24px;
+
 // Font family mixin
 @mixin font-family($type, $size) {
     font-family: $primary-font-family;
