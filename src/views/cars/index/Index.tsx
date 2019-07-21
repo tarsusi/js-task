@@ -114,12 +114,16 @@ class Index extends React.Component<Props, State> {
 	};
 
 	render() {
-		const { cars, currentPage, selectedSort, totalPageCount } = this.state;
+		const { cars, currentPage, selectedColor, selectedManufacturer, selectedSort, totalPageCount } = this.state;
 		const subtitle = this.generateSubtitle();
 
 		return (
 			<div className="car-index-container">
-				<NavFilter onFiltered={this.onFiltered} />
+				<NavFilter
+					onFiltered={this.onFiltered}
+					selectedColor={selectedColor}
+					selectedManufacturer={selectedManufacturer}
+				/>
 				<div className="car-index-main-wrapper">
 					<div className="car-list-header-container">
 						<div className="car-list-title-container">
