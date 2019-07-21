@@ -4,7 +4,7 @@ import { HOME_PAGE, SHOW_PAGE, NOT_FOUND_PAGE } from '../common/constants/routeN
 
 import Page from './page/Page';
 
-import Home from './cars/Index';
+import Home from './cars/index/Index';
 import Show from './cars/show/Show';
 import NotFound from './not-found/NotFound';
 

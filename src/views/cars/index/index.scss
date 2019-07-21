@@ -1,0 +1,58 @@
+.car-index-container {
+    display: flex;
+
+    padding: $padding-large;
+
+    .nav-filter-container {
+        align-self: flex-start;
+    }
+
+    .car-index-main-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 0;
+
+        margin-left: $margin-large;
+
+        .car-list-header-container {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: $margin-large;
+
+            .car-list-title-container {
+                display: flex;
+                flex-direction: column;
+
+                .car-list-title {
+                    margin-bottom: $margin-medium;
+
+                    @include font-family(bold, large);
+                }
+
+                .car-list-subtitle {
+                    @include font-family(regular, large);
+                }
+            }
+
+            .car-list-sort-container {
+                display: flex;
+                flex-direction: column;
+
+                .car-list-sort-label {
+                    @include font-family(regular, small);
+                }
+            
+                .car-list-sort-select {
+                    margin: $margin-medium 0;
+                }
+            }
+        }
+
+        .pagination-container {
+            align-self: center;
+
+            margin-top: $margin-medium;
+        }
+    }
+}

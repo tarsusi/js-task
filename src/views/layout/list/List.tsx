@@ -9,11 +9,11 @@ const List: React.FunctionComponent<ListProps> = (props) => {
 	return (
 		<div className="car-list-container">
 			{props.cars.map((car) => (
-				<div className="car-list-item-wrapper">
+				<div className="car-list-item-wrapper" key={car.stockNumber}>
 					<div className="car-picture-container">
 						<img className="car-picture" src={car.pictureUrl} alt={generateCarName(car)} />
 					</div>
-					<div className="car-list-item-container" key={car.stockNumber}>
+					<div className="car-list-item-container">
 						<div className="car-list-item-name">{generateCarName(car)}</div>
 						<div className="car-list-item-features">{generateCarFeatures(car)}</div>
 						<AppLink label="View details" to={`/${car.stockNumber}/detail`} small />
