@@ -23,6 +23,12 @@ header {
             &:not(:last-child) {
                 margin-right: $margin-large;
              }
+
+             a {
+                color: $black;
+
+                text-decoration: none;
+             }
         }
     }
 }

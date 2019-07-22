@@ -35,6 +35,16 @@ class Show extends React.Component<ShowProps, ShowState> {
 
 		if (car) {
 			carStorage.addFavourites(car);
+			this.forceUpdate(); // TODO this is bad practice, please fix it!!!
+		}
+	};
+
+	removeFavourite = () => {
+		const { car } = this.state;
+
+		if (car) {
+			carStorage.removeFavourite(car);
+			this.forceUpdate(); // TODO this is bad practice, please fix it!!!
 		}
 	};
 
@@ -48,6 +58,27 @@ class Show extends React.Component<ShowProps, ShowState> {
 		} else {
 			this.props.history.push(HOME_PAGE);
 		}
+	};
+
+	renderFavouriteContainer = () => {
+		const { car } = this.state;
+
+		return !carStorage.isFavourited(car) ? (
+			<>
+				<div className="car-save-to-favourite-message">
+					If you like this car, click the button and save it in your collection of favourite items.
+				</div>
+				<Button className="car-save-to-favourite-button" label="Save" onClick={this.addToFavourite} />
+			</>
+		) : (
+			<>
+				<div className="car-save-to-favourite-message">
+					If you decide to unlike this car, click the button and remove it from your collection of favourite
+					items.
+				</div>
+				<Button className="car-save-to-favourite-button" label="Remove" onClick={this.removeFavourite} />
+			</>
+		);
 	};
 
 	render() {
@@ -74,17 +105,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 								</div>
 							)}
 						</div>
-						<div className="car-save-to-favourite-container">
-							<div className="car-save-to-favourite-message">
-								If you like this car, click the button and save it in your collection of favourite
-								items.
-							</div>
-							<Button
-								className="car-save-to-favourite-button"
-								label="Save"
-								onClick={this.addToFavourite}
-							/>
-						</div>
+						<div className="car-save-to-favourite-container">{this.renderFavouriteContainer()}</div>
 					</div>
 				</div>
 			)

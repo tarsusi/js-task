@@ -11,16 +11,28 @@ class CarStorage {
 		}
 	};
 
+	isFavourited = (car: ICar | null) => {
+		const favouriteCars = this.getFavourites();
+
+		return car ? !!favouriteCars.find((favouriteCar) => favouriteCar.stockNumber === car.stockNumber) : false;
+	};
+
 	getFavourites = (): ICar[] => {
 		const favouriteCars = localStorage.getItem(FAVOURITES);
 
 		return favouriteCars ? JSON.parse(favouriteCars) : [];
 	};
 
-	isFavourited = (car: ICar) => {
+	removeFavourite = (car: ICar) => {
 		const favouriteCars = this.getFavourites();
 
-		return favouriteCars.find((favouriteCar) => favouriteCar.stockNumber === car.stockNumber);
+		const carIndex = favouriteCars.findIndex((favouriteCar) => favouriteCar.stockNumber === car.stockNumber);
+
+		if (carIndex >= 0) {
+			favouriteCars.splice(carIndex, 1);
+
+			localStorage.setItem(FAVOURITES, JSON.stringify(favouriteCars));
+		}
 	};
 
 	clear = localStorage.clear;

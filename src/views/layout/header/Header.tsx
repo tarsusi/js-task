@@ -5,6 +5,7 @@ import AppLogo from '../../../components/app-logo/AppLogo';
 
 import INavLink from '../../../common/types/components/INavLink';
 import { HOME_PAGE } from '../../../common/constants/routeNames';
+import { Link } from 'react-router-dom';
 
 const navLinks: INavLink[] = [
 	{
@@ -13,7 +14,7 @@ const navLinks: INavLink[] = [
 	},
 	{
 		label: 'My Orders',
-		to: '/my-orders',
+		to: '/favourites',
 	},
 	{
 		label: 'Sell',
@@ -33,10 +34,9 @@ const Header = (props: RouteComponentProps) => {
 				}}
 			/>
 			<ul className="header-nav">
-				{// TODO replace these links with Router Link components
-				navLinks.map((navLink) => (
+				{navLinks.map((navLink) => (
 					<li className="nav-item" key={navLink.label}>
-						<span>{navLink.label}</span>
+						<Link to={navLink.to}>{navLink.label}</Link>
 					</li>
 				))}
 			</ul>
