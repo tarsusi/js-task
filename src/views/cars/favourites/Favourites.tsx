@@ -1,20 +1,18 @@
 import * as React from 'react';
 
-import ICar from '../../../common/types/models/ICar';
-
 import List from '../../layout/list/List';
 
-import carStorage from '../../../services/storage/carStorage';
+import IFavouriteReducerState from '../../../common/types/store/IFavouriteReducerState';
 
-const Favourites: React.FunctionComponent = () => {
-	const cars: ICar[] = carStorage.getFavourites();
-
-	return (
-		<div className="favourites-container">
-			<div className="favourites-title">Favourite cars</div>
-			<List cars={cars} />
-		</div>
-	);
-};
+class Favourites extends React.Component<IFavouriteReducerState, {}> {
+	render() {
+		return (
+			<div className="favourites-container">
+				<div className="favourites-title">Favourite cars</div>
+				<List cars={this.props.cars} />
+			</div>
+		);
+	}
+}
 
 export default Favourites;

@@ -34,8 +34,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 		const { car } = this.state;
 
 		if (car) {
-			carStorage.addFavourites(car);
-			this.forceUpdate(); // TODO this is bad practice, please fix it!!!
+			this.props.addFavourite(car);
 		}
 	};
 
@@ -43,8 +42,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 		const { car } = this.state;
 
 		if (car) {
-			carStorage.removeFavourite(car);
-			this.forceUpdate(); // TODO this is bad practice, please fix it!!!
+			this.props.removeFavourite(car);
 		}
 	};
 
