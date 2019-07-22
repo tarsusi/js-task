@@ -7,13 +7,15 @@ import Footer from '../layout/footer/Footer';
 class Page extends Route<RouteProps> {
 	render() {
 		return (
-			<>
-				<Header />
-				<main>
-					<Route {...this.props} />
-				</main>
-				<Footer />
-			</>
+			<React.Suspense fallback={<React.Fragment />}>
+				<>
+					<Header />
+					<main>
+						<Route {...this.props} />
+					</main>
+					<Footer />
+				</>
+			</React.Suspense>
 		);
 	}
 }

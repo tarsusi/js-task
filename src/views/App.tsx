@@ -4,10 +4,10 @@ import { FAVOURITES_PAGE, HOME_PAGE, SHOW_PAGE, NOT_FOUND_PAGE } from '../common
 
 import Page from './page/Page';
 
-import Favourites from './cars/favourites/Favourites';
-import Home from './cars/index/Index';
-import Show from './cars/show/Show';
-import NotFound from './not-found/NotFound';
+const Favourites = React.lazy(() => import('./cars/favourites/Favourites'));
+const Home = React.lazy(() => import('./cars/index/Index'));
+const Show = React.lazy(() => import('./cars/show/Show'));
+const NotFound = React.lazy(() => import('./not-found/NotFound'));
 
 const App = () => {
 	return (
