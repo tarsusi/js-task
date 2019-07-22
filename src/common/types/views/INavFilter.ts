@@ -1,14 +1,17 @@
-import { ISelectItem } from '../components/ISelect';
+import {
+	NavFilterMapDispatchToProps,
+	NavFilterMapStateToProps,
+} from '../../../views/layout/nav-filter/NavFilterContainer';
 
-export interface Props {
+export interface Props
+	extends ReturnType<typeof NavFilterMapDispatchToProps>,
+		ReturnType<typeof NavFilterMapStateToProps> {
 	onFiltered: (color: string, manufacturer: string) => any;
 	selectedColor?: string;
 	selectedManufacturer?: string;
 }
 
 export interface State {
-	colors: ISelectItem[];
-	manufacturers: ISelectItem[];
 	selectedColor: string;
 	selectedManufacturer: string;
 }

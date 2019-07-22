@@ -1,16 +1,14 @@
 import { ADD_FAVOURITE, CLEAR_FAVOURITES, REMOVE_FAVOURITE } from '../../common/constants/actionTypes';
-import ICar from '../../common/types/models/ICar';
+
+import { IFavouritesReducerState, FavouritesAction } from '../../common/types/store/IFavouritesReducer';
+
 import carStorage from '../../services/storage/carStorage';
 
-type InitialState = {
-	cars: ICar[];
-};
-
-const initialState: InitialState = {
+const initialState: IFavouritesReducerState = {
 	cars: carStorage.getFavourites(),
 };
 
-const favourites = (state = initialState, action) => {
+const favourites = (state = initialState, action: FavouritesAction) => {
 	switch (action.type) {
 		case ADD_FAVOURITE:
 		case REMOVE_FAVOURITE:

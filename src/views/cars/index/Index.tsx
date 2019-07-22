@@ -2,7 +2,7 @@ import * as React from 'react';
 import { parse, stringify } from 'query-string';
 
 import List from '../../layout/list/List';
-import NavFilter from '../../layout/nav-filter/NavFilter';
+import NavFilter from '../../layout/nav-filter/NavFilterContainer';
 
 import { PAGINATION_LIMIT, SORT_ITEMS } from '../../../common/constants/generalConstants';
 import { Props, RouteParams, State } from '../../../common/types/views/IIndex';

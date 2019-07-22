@@ -1,5 +1,7 @@
-import IFavouriteReducerState from './IFavouriteReducerState';
+import { IFavouritesReducerState } from './IFavouritesReducer';
+import { INavFilterReducerState } from './INavFilterReducer';
 
 export default interface IRootReducerState {
-	favourites: IFavouriteReducerState;
+	favourites: IFavouritesReducerState;
+	navFilter: INavFilterReducerState;
 }

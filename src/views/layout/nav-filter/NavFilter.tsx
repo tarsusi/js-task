@@ -3,44 +3,19 @@ import * as React from 'react';
 import Button from '../../../components/button/Button';
 import Select from '../../../components/select/Select';
 
-import { getColors, getManufacturers } from '../../../services/api/filtersApi';
-
 import { ISelectItem } from '../../../common/types/components/ISelect';
 import { Props as NavFilterProps, State as NavFilterState } from '../../../common/types/views/INavFilter';
-import IManufacturer from '../../../common/types/models/IManufacturer';
 
 class NavFilter extends React.Component<NavFilterProps, NavFilterState> {
 	state = {
-		colors: [],
-		manufacturers: [],
 		selectedColor: this.props.selectedColor || '',
 		selectedManufacturer: this.props.selectedManufacturer || '',
 	};
 
 	componentDidMount() {
-		this.getColors();
-		this.getManufacturers();
+		this.props.getColors();
+		this.props.getManufacturers();
 	}
-
-	getColors = async () => {
-		const colors = await getColors();
-
-		if (colors) {
-			this.setState({
-				colors: this.toColorItems(colors),
-			});
-		}
-	};
-
-	getManufacturers = async () => {
-		const manufacturers = await getManufacturers();
-
-		if (manufacturers) {
-			this.setState({
-				manufacturers: this.toManufacturerItems(manufacturers),
-			});
-		}
-	};
 
 	onColorSelected = (item: ISelectItem) => {
 		this.setState({
@@ -60,20 +35,9 @@ class NavFilter extends React.Component<NavFilterProps, NavFilterState> {
 		});
 	};
 
-	toColorItems = (colors: string[]): ISelectItem[] =>
-		colors.map((color) => ({
-			key: color,
-			value: color,
-		}));
-
-	toManufacturerItems = (manufacturers: IManufacturer[]): ISelectItem[] =>
-		manufacturers.map((manufacturer) => ({
-			key: manufacturer.name,
-			value: manufacturer.name,
-		}));
-
 	render() {
-		const { colors, manufacturers, selectedColor, selectedManufacturer } = this.state;
+		const { selectedColor, selectedManufacturer } = this.state;
+		const { colors, manufacturers } = this.props;
 
 		return (
 			<aside className="nav-filter-container">
