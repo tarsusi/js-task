@@ -1,4 +1,7 @@
 .nav-filter-container {
+    position: sticky;
+    top: $header-height + $padding-large;
+
     display: flex;
     flex-direction: column;
 
