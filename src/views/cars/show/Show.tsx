@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Props as ShowProps, State as ShowState } from '../../../common/types/views/IShow';
 
-import { getCarDetails } from '../../../services/carApi';
+import { getCarDetails } from '../../../services/api/carApi';
 
 import { HOME_PAGE } from '../../../common/constants/routeNames';
 

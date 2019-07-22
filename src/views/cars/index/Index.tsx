@@ -10,7 +10,7 @@ import { ISelectItem } from '../../../common/types/components/ISelect';
 
 import { HOME_PAGE } from '../../../common/constants/routeNames';
 
-import { getCars, GetCarsParams } from '../../../services/carApi';
+import { getCars, GetCarsParams } from '../../../services/api/carApi';
 
 import Pagination from '../../../components/pagination/Pagination';
 import Select from '../../../components/select/Select';

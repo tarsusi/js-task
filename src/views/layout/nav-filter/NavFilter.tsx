@@ -3,7 +3,7 @@ import * as React from 'react';
 import Button from '../../../components/button/Button';
 import Select from '../../../components/select/Select';
 
-import { getColors, getManufacturers } from '../../../services/filtersApi';
+import { getColors, getManufacturers } from '../../../services/api/filtersApi';
 
 import { ISelectItem } from '../../../common/types/components/ISelect';
 import { Props as NavFilterProps, State as NavFilterState } from '../../../common/types/views/INavFilter';
