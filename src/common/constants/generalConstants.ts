@@ -6,6 +6,8 @@ export const PAGINATION_LIMIT = 10;
 
 export const CAR_FEATURES_SEPARATOR = ' - ';
 
+export const FAVOURITES = 'favourites';
+
 export const SORT_ITEMS: ISelectItem[] = [
 	{
 		key: 'None',
