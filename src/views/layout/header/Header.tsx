@@ -7,7 +7,7 @@ import INavLink from '../../../common/types/components/INavLink';
 import { HOME_PAGE } from '../../../common/constants/routeNames';
 import { Link } from 'react-router-dom';
 
-const navLinks: INavLink[] = [
+export const navLinks: INavLink[] = [
 	{
 		label: 'Purchase',
 		to: '/purchase',
