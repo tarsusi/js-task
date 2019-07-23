@@ -27,11 +27,21 @@ class Show extends React.Component<ShowProps, ShowState> {
 			},
 		} = this.props;
 
-		this.getCarDetails(carId);
+		this.props.getCarDetails(carId);
+	}
+
+	componentDidUpdate(prevProps: ShowProps) {
+		if (this.props.error && !prevProps.error) {
+			this.props.history.push(HOME_PAGE);
+		}
+	}
+
+	componentWillUnmount() {
+		this.props.clearCarDetails();
 	}
 
 	addToFavourite = () => {
-		const { car } = this.state;
+		const { car } = this.props;
 
 		if (car) {
 			this.props.addFavourite(car);
@@ -39,7 +49,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 	};
 
 	removeFavourite = () => {
-		const { car } = this.state;
+		const { car } = this.props;
 
 		if (car) {
 			this.props.removeFavourite(car);
@@ -59,7 +69,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 	};
 
 	renderFavouriteContainer = () => {
-		const { car } = this.state;
+		const { car } = this.props;
 
 		return !carStorage.isFavourited(car) ? (
 			<>
@@ -80,7 +90,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 	};
 
 	render() {
-		const { car } = this.state;
+		const { car } = this.props;
 
 		const carName = generateCarName(car);
 		const carFeatures = generateCarFeatures(car);
