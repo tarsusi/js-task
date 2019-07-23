@@ -1,37 +1,94 @@
-// ETA: 2 hours
+import * as React from 'react';
+
+import { cleanup, render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+
+import NavFilter from './NavFilter';
+import { getColors, getManufacturers } from '../../../store/actions/navFilterActions';
+
+afterEach(cleanup);
+
 describe('<NavFilter />', () => {
-  it('should render "Color" <Label />', () => {
-    expect(false).toBe(true);
-  });
+	it('should render "Color" <Label />', () => {
+		const { getByText } = render(
+			<NavFilter
+				colors={[]}
+				manufacturers={[]}
+				onFiltered={() => {}}
+				getColors={getColors}
+				getManufacturers={getManufacturers}
+			/>,
+		);
 
-  it('should render colors <Select />', () => {
-    expect(false).toBe(true);
-  });
+		const colorLabel = getByText('Color');
 
-  it('should render "Manufacturer" <Label />', () => {
-    expect(false).toBe(true);
-  });
+		expect(colorLabel).toBeDefined();
+	});
 
-  it('should render manufacturers <Select />', () => {
-    expect(false).toBe(true);
-  });
+	it('should render colors <Select />', () => {
+		const { getByText } = render(
+			<NavFilter
+				colors={[]}
+				manufacturers={[]}
+				onFiltered={() => {}}
+				getColors={getColors}
+				getManufacturers={getManufacturers}
+			/>,
+		);
 
-  it('should render "Filter" <Button />', () => {
-    expect(false).toBe(true);
-  });
+		const colorSelect = getByText('All car colors');
 
-  it('should change address bar to selected values on "Filter" press', () => {
-    /* Valid combinations:
-     ?color=black&manufacturer=BMW
-     ?color=black&manufacturer=
-     ?color=&manufacturer=BMW
-     ?color=&manufacturer=
-     ?color=black
-     ?manufacturer=BMW
-     ?color=
-     ?manufacturer=
-     ?
-    */
-    expect(false).toBe(true);
-  });
+		expect(colorSelect).toBeDefined();
+		expect(colorSelect).toHaveClass('select-title');
+	});
+
+	it('should render "Manufacturer" <Label />', () => {
+		const { getByText } = render(
+			<NavFilter
+				colors={[]}
+				manufacturers={[]}
+				onFiltered={() => {}}
+				getColors={getColors}
+				getManufacturers={getManufacturers}
+			/>,
+		);
+
+		const manufacturerLabel = getByText('Manufacturer');
+
+		expect(manufacturerLabel).toBeDefined();
+	});
+
+	it('should render manufacturers <Select />', () => {
+		const { getByText } = render(
+			<NavFilter
+				colors={[]}
+				manufacturers={[]}
+				onFiltered={() => {}}
+				getColors={getColors}
+				getManufacturers={getManufacturers}
+			/>,
+		);
+
+		const manufacturerSelect = getByText('All manufacturers');
+
+		expect(manufacturerSelect).toBeDefined();
+		expect(manufacturerSelect).toHaveClass('select-title');
+	});
+
+	it('should render "Filter" <Button />', () => {
+		const { container } = render(
+			<NavFilter
+				colors={[]}
+				manufacturers={[]}
+				onFiltered={() => {}}
+				getColors={getColors}
+				getManufacturers={getManufacturers}
+			/>,
+		);
+
+		const filterButton = container.querySelector('button');
+
+		expect(filterButton).toBeDefined();
+		expect(filterButton).toHaveTextContent('Filter');
+	});
 });
