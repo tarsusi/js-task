@@ -1,64 +1,118 @@
-// ETA: 1-2 hours
+import * as React from 'react';
+
+import { render, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+
+import Pagination from './Pagination';
+
+afterEach(cleanup);
+
+const firstPageNumber = 1;
+const currentPageNumber = 2;
+const totalPageNumber = 10;
+
 describe('<Pagination />', () => {
-  it('should render "First" page link', () => {
-    expect(false).toBe(true);
-  });
+	it('should render "First" page link', () => {
+		const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+		const firstPageLink = getByText('First');
 
-  it('should render "Previous" page link', () => {
-    expect(false).toBe(true);
-  });
+		expect(firstPageLink).toBeDefined();
+	});
 
-  it('should render "Page 2 of 10"', () => {
-    expect(false).toBe(true);
-  });
+	it('should render "Previous" page link', () => {
+		const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+		const previousPageLink = getByText('Previous');
 
-  it('should render "Next" page link', () => {
-    expect(false).toBe(true);
-  });
+		expect(previousPageLink).toBeDefined();
+	});
 
-  it('should render "Last" page link', () => {
-    expect(false).toBe(true);
-  });
+	it('should render "Page 2 of 10"', () => {
+		const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+		const pager = getByText(`Page ${currentPageNumber} of ${totalPageNumber}`);
 
-  describe('on first page', () => {
-    it('should disable "First" page link', () => {
-      expect(false).toBe(true);
-    });
+		expect(pager).toBeDefined();
+	});
 
-    it('should disable "Previous" page link', () => {
-      expect(false).toBe(true);
-    });
+	it('should render "Next" page link', () => {
+		const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+		const nextPageLink = getByText('Next');
 
-    it('should enable "Next" page link', () => {
-      expect(false).toBe(true);
-    });
-  });
+		expect(nextPageLink).toBeDefined();
+	});
 
-  describe('on not last page and not first page', () => {
-    it('should enable "First" page link', () => {
-      expect(false).toBe(true);
-    });
+	it('should render "Last" page link', () => {
+		const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+		const lastPageLink = getByText('Last');
 
-    it('should enable "Previous" page link', () => {
-      expect(false).toBe(true);
-    });
+		expect(lastPageLink).toBeDefined();
+	});
 
-    it('should enable "Next" page link', () => {
-      expect(false).toBe(true);
-    });
+	describe('on first page', () => {
+		it('should disable "First" page link', () => {
+			const { getByText } = render(<Pagination currentPage={firstPageNumber} totalPage={totalPageNumber} />);
+			const firstPageLink = getByText('First');
 
-    it('should enable "Last" page link', () => {
-      expect(false).toBe(true);
-    });
-  });
+			expect(firstPageLink).toHaveClass('disabled');
+		});
 
-  describe('on last page', () => {
-    it('should disable "Next" page link', () => {
-      expect(false).toBe(true);
-    });
+		it('should disable "Previous" page link', () => {
+			const { getByText } = render(<Pagination currentPage={firstPageNumber} totalPage={totalPageNumber} />);
+			const previousPageLink = getByText('Previous');
 
-    it('should disable "Last" page link', () => {
-      expect(false).toBe(true);
-    });
-  });
+			expect(previousPageLink).toHaveClass('disabled');
+		});
+
+		it('should enable "Next" page link', () => {
+			const { getByText } = render(<Pagination currentPage={firstPageNumber} totalPage={totalPageNumber} />);
+			const nextPageLink = getByText('Next');
+
+			expect(nextPageLink).not.toHaveClass('disabled');
+		});
+	});
+
+	describe('on not last page and not first page', () => {
+		it('should enable "First" page link', () => {
+			const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+			const firstPageLink = getByText('First');
+
+			expect(firstPageLink).not.toHaveClass('disabled');
+		});
+
+		it('should enable "Previous" page link', () => {
+			const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+			const previousPageLink = getByText('Previous');
+
+			expect(previousPageLink).not.toHaveClass('disabled');
+		});
+
+		it('should enable "Next" page link', () => {
+			const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+			const nextPageLink = getByText('Next');
+
+			expect(nextPageLink).not.toHaveClass('disabled');
+		});
+
+		it('should enable "Last" page link', () => {
+			const { getByText } = render(<Pagination currentPage={currentPageNumber} totalPage={totalPageNumber} />);
+			const lastPageLink = getByText('Last');
+
+			expect(lastPageLink).not.toHaveClass('disabled');
+		});
+	});
+
+	describe('on last page', () => {
+		it('should disable "Next" page link', () => {
+			const { getByText } = render(<Pagination currentPage={totalPageNumber} totalPage={totalPageNumber} />);
+			const nextPageLink = getByText('Next');
+
+			expect(nextPageLink).toHaveClass('disabled');
+		});
+
+		it('should disable "Last" page link', () => {
+			const { getByText } = render(<Pagination currentPage={totalPageNumber} totalPage={totalPageNumber} />);
+			const lastPageLink = getByText('Last');
+
+			expect(lastPageLink).toHaveClass('disabled');
+		});
+	});
 });
