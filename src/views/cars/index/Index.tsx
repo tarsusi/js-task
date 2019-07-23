@@ -27,17 +27,17 @@ class Index extends React.Component<Props, State> {
 			selectedSort: (queryParams.sort && queryParams.sort.toUpperCase()) || SORT_ITEMS[0].key,
 			selectedColor: queryParams.color || '',
 			selectedManufacturer: queryParams.manufacturer || '',
-			totalCarsCount: 0,
-			totalPageCount: 1,
 		};
 	}
 
 	componentDidMount() {
-		this.getCars();
+		const generatedParams = this.generateQueryParams();
+
+		this.props.getCars(generatedParams);
 	}
 
 	generateSubtitle = () => {
-		const { cars, totalCarsCount } = this.state;
+		const { cars, totalCarsCount } = this.props;
 		const carsCount = Math.min(cars.length, PAGINATION_LIMIT);
 
 		return `Showing ${carsCount} of ${totalCarsCount} results`;
@@ -64,23 +64,15 @@ class Index extends React.Component<Props, State> {
 		return params;
 	};
 
-	getCars = async () => {
+	getCars = () => {
 		const generatedParams = this.generateQueryParams();
-
-		const carResult = await getCars(generatedParams);
 
 		this.props.history.push({
 			pathname: HOME_PAGE,
 			search: stringify(generatedParams),
 		});
 
-		if (carResult && carResult.totalCarsCount) {
-			this.setState({
-				cars: carResult.cars,
-				totalCarsCount: carResult.totalCarsCount,
-				totalPageCount: carResult.totalPageCount,
-			});
-		}
+		this.props.getCars(generatedParams);
 	};
 
 	onFiltered = (selectedColor: string, selectedManufacturer: string) => {
@@ -114,7 +106,9 @@ class Index extends React.Component<Props, State> {
 	};
 
 	render() {
-		const { cars, currentPage, selectedColor, selectedManufacturer, selectedSort, totalPageCount } = this.state;
+		const { currentPage, selectedColor, selectedManufacturer, selectedSort } = this.state;
+		const { totalPageCount, cars } = this.props;
+
 		const subtitle = this.generateSubtitle();
 
 		return (

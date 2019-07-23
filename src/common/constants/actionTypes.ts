@@ -7,3 +7,4 @@ export const GET_MANUFACTURERS = 'GET_MANUFACTURERS';
 
 export const CLEAR_CAR_DETAILS = 'CLEAR_CAR_DETAILS';
 export const GET_CAR_DETAILS = 'GET_CAR_DETAILS';
+export const GET_CARS = 'GET_CARS';

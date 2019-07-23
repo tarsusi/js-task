@@ -1,4 +1,4 @@
-import { CLEAR_CAR_DETAILS, GET_CAR_DETAILS } from '../../common/constants/actionTypes';
+import { CLEAR_CAR_DETAILS, GET_CAR_DETAILS, GET_CARS } from '../../common/constants/actionTypes';
 
 import { ICarReducerState, CarAction } from '../../common/types/store/ICarReducer';
 
@@ -15,12 +15,22 @@ const initialState: ICarReducerState = {
 		pictureUrl: '',
 		stockNumber: -1,
 	},
-	list: [],
+	cars: [],
+	totalCarsCount: 0,
+	totalPageCount: 1,
 	error: false,
 };
 
 const favourites = (state = initialState, action: CarAction) => {
 	switch (action.type) {
+		case GET_CARS:
+			return {
+				...state,
+				cars: action.payload.cars,
+				error: action.payload.error,
+				totalCarsCount: action.payload.totalCarsCount,
+				totalPageCount: action.payload.totalPageCount,
+			};
 		case GET_CAR_DETAILS:
 			return {
 				...state,

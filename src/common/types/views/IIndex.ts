@@ -1,6 +1,8 @@
 import ICar from '../models/ICar';
 import { RouteComponentProps } from 'react-router';
 
+import { IndexMapDispatchToProps, IndexMapStateToProps } from '../../../views/cars/index/IndexContainer';
+
 export type RouteParams = {
 	color?: string;
 	manufacturer?: string;
@@ -8,7 +10,10 @@ export type RouteParams = {
 	sort?: string;
 };
 
-export interface Props extends RouteComponentProps<RouteParams> {}
+export interface Props
+	extends RouteComponentProps<RouteParams>,
+		ReturnType<typeof IndexMapDispatchToProps>,
+		ReturnType<typeof IndexMapStateToProps> {}
 
 export interface State {
 	cars: ICar[];
@@ -16,6 +21,4 @@ export interface State {
 	selectedColor: string;
 	selectedManufacturer: string;
 	selectedSort: string;
-	totalCarsCount: number;
-	totalPageCount: number;
 }
