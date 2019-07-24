@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import List from '../../layout/list/List';
 
-import IFavouriteReducerState from '../../../common/types/store/IFavouriteReducerState';
+import { IFavouritesReducerState } from '../../../common/types/store/IFavouritesReducer';
 
-class Favourites extends React.Component<IFavouriteReducerState, {}> {
+class Favourites extends React.Component<IFavouritesReducerState, {}> {
 	render() {
 		return (
 			<div className="favourites-container">

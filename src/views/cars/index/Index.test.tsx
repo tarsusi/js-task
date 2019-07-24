@@ -86,10 +86,6 @@ describe('<Index />', () => {
 		expect(carListContainer.length).toBe(10);
 	});
 
-	it('should render favorite cars first', () => {
-		expect(false).toBe(true);
-	});
-
 	it('should render cars manufacturer and model name', async () => {
 		const { getAllByTestId } = mountContainerWithRouter('/');
 		const carNames = await waitForElement(() => getAllByTestId('auto1-group-car-name'));
