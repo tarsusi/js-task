@@ -11,7 +11,11 @@ const List: React.FunctionComponent<ListProps> = (props) => {
 			{props.cars.map((car) => (
 				<div className="car-list-item-wrapper" key={car.stockNumber} data-testid="auto1-group-car-list-item">
 					<div className="car-picture-container">
-						<img className="car-picture" src={car.pictureUrl} alt={generateCarName(car)} />
+						<img
+							className="car-picture"
+							src={car.pictureUrl}
+							alt={`${car.manufacturerName} ${car.modelName}`}
+						/>
 					</div>
 					<div className="car-list-item-container">
 						<div className="car-list-item-name" data-testid="auto1-group-car-name">

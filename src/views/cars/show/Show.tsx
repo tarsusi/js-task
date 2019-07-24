@@ -3,9 +3,8 @@ import * as React from 'react';
 import { Props as ShowProps, State as ShowState } from '../../../common/types/views/IShow';
 
 import carStorage from '../../../services/storage/carStorage';
-import { getCarDetails } from '../../../services/api/carApi';
 
-import { HOME_PAGE } from '../../../common/constants/routeNames';
+import { NOT_FOUND_PAGE } from '../../../common/constants/routeNames';
 
 import Button from '../../../components/button/Button';
 
@@ -32,7 +31,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 
 	componentDidUpdate(prevProps: ShowProps) {
 		if (this.props.error && !prevProps.error) {
-			this.props.history.push(HOME_PAGE);
+			this.props.history.push(NOT_FOUND_PAGE);
 		}
 	}
 
@@ -53,18 +52,6 @@ class Show extends React.Component<ShowProps, ShowState> {
 
 		if (car) {
 			this.props.removeFavourite(car);
-		}
-	};
-
-	getCarDetails = async (carId: string) => {
-		const carDetails = await getCarDetails(carId);
-
-		if (carDetails) {
-			this.setState({
-				car: carDetails,
-			});
-		} else {
-			this.props.history.push(HOME_PAGE);
 		}
 	};
 
@@ -96,10 +83,15 @@ class Show extends React.Component<ShowProps, ShowState> {
 		const carFeatures = generateCarFeatures(car);
 
 		return (
-			car && (
-				<div className="car-details-container">
+			car &&
+			car.stockNumber >= 0 && (
+				<div className="car-details-container" data-testid="auto1-group-car-details">
 					<div className="car-picture-container">
-						<img className="car-picture" src={car.pictureUrl} alt={carName} />
+						<img
+							className="car-picture"
+							src={car.pictureUrl}
+							alt={`${car.manufacturerName} ${car.modelName}`}
+						/>
 					</div>
 					<div className="car-details-wrapper">
 						<div className="car-details">

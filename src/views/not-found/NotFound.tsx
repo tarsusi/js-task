@@ -7,7 +7,7 @@ import AppLink from '../../components/app-link/AppLink';
 
 const NotFound = () => {
 	return (
-		<div className="not-found-container">
+		<div className="not-found-container" data-testid="auto1-group-not-found">
 			<AppLogo />
 			<div className="not-found-title">404 - Not Found</div>
 			<div className="not-found-message">Sorry, the page you are looking for does not exist.</div>
