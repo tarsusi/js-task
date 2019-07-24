@@ -11,9 +11,9 @@ class Page extends Route<RouteProps> {
 				<>
 					<Header />
 					<main>
-						<Route {...this.props} />
+						<Route className="route-container" {...this.props} />
+						<Footer />
 					</main>
-					<Footer />
 				</>
 			</React.Suspense>
 		);

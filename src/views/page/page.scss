@@ -1,5 +1,13 @@
 main {
+    display: flex;
     flex: 1 0 0;
+    flex-direction: column;
+
+    overflow: auto;
 
     border-bottom: $border-width solid $gray;
+
+    & > *:not(footer) {
+        flex: 1 0 0;
+    }
 }

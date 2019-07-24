@@ -45,3 +45,16 @@ describe('<Header />', () => {
 		expect(myOrdersLink.getAttribute('href')).toBe(myOrdersNavLink.to);
 	});
 });
+
+describe('should stick elements on scroll or resize', () => {
+	it('should stick <Header /> always on top', async () => {
+		const { getByTestId } = renderWithRouter(<Header />);
+
+		const headerElement = getByTestId('auto1-group-header');
+
+		expect(headerElement).toHaveStyle('position: sticky;');
+		expect(headerElement).toHaveStyle('top: 0;');
+		expect(headerElement).toHaveStyle('left: 0;');
+		expect(headerElement).toHaveStyle('right: 0;');
+	});
+});

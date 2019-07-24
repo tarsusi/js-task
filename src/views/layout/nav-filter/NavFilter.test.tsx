@@ -92,3 +92,23 @@ describe('<NavFilter />', () => {
 		expect(filterButton).toHaveTextContent('Filter');
 	});
 });
+
+describe('should stick elements on scroll or resize', () => {
+	it('should stick <FilterNav /> always on left top side', async () => {
+		const { getByTestId } = render(
+			<NavFilter
+				colors={[]}
+				manufacturers={[]}
+				onFiltered={() => {}}
+				getColors={getColors}
+				getManufacturers={getManufacturers}
+			/>,
+		);
+
+		const navFilterElement = getByTestId('auto1-group-nav-filter');
+
+		expect(navFilterElement).toHaveStyle('position: sticky;');
+		expect(navFilterElement).toHaveStyle('top: 24px;');
+		expect(navFilterElement).toHaveStyle('left: 24px;');
+	});
+});

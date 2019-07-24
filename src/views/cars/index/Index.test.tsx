@@ -1,13 +1,19 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { render, cleanup, waitForElement, fireEvent } from '@testing-library/react';
-import IndexContainer from './IndexContainer';
-
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import rootReducer from '../../../store/reducers/rootReducer';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
+import IndexContainer from './IndexContainer';
+import Header from '../../layout/header/Header';
+import NavFilter from '../../layout/nav-filter/NavFilter';
+
+import { getColors, getManufacturers } from '../../../store/actions/navFilterActions';
+
+import '../../../styles/main.scss';
 
 afterEach(cleanup);
 
@@ -105,15 +111,5 @@ describe('<Index />', () => {
 		fireEvent.click(viewDetailsButton[0]);
 
 		expect(window.location.pathname).toBe('/0/detail');
-	});
-
-	describe('should stick elements on scroll or resize', () => {
-		it('should stick <Header /> always on top', () => {
-			expect(false).toBe(true);
-		});
-
-		it('should stick <FilterNav /> always on left top side', () => {
-			expect(false).toBe(true);
-		});
 	});
 });
