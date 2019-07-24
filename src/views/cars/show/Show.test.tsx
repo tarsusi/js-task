@@ -43,9 +43,9 @@ describe('<Show />', () => {
 		const { getByTestId, getByText } = mountContainerWithRouter(testRoute, linkLabel);
 
 		fireEvent.click(getByText(linkLabel));
-		const carDetailContainer = await waitForElement(() => getByTestId('auto1-group-not-found'));
+		const notFoundContainer = await waitForElement(() => getByTestId('auto1-group-not-found'));
 
-		expect(carDetailContainer).toBeDefined();
+		expect(notFoundContainer).toBeDefined();
 		expect(window.location.pathname).toBe(NOT_FOUND_PAGE);
 	});
 
@@ -55,9 +55,9 @@ describe('<Show />', () => {
 		const { getByTestId, getByText } = mountContainerWithRouter(testRoute, linkLabel);
 
 		fireEvent.click(getByText(linkLabel));
-		const carDetailContainer = await waitForElement(() => getByTestId('auto1-group-car-manufacturer'));
+		const manufacturerElement = await waitForElement(() => getByTestId('auto1-group-car-manufacturer'));
 
-		expect(carDetailContainer).toBeDefined();
+		expect(manufacturerElement).toBeDefined();
 	});
 
 	it('should render car model name', async () => {
@@ -67,9 +67,9 @@ describe('<Show />', () => {
 		const { getByTestId, getByText } = mountContainerWithRouter(testRoute, linkLabel);
 
 		fireEvent.click(getByText(linkLabel));
-		const carDetailContainer = await waitForElement(() => getByTestId('auto1-group-car-name'));
+		const carNameElement = await waitForElement(() => getByTestId('auto1-group-car-name'));
 
-		expect(carDetailContainer).toBeDefined();
+		expect(carNameElement).toBeDefined();
 	});
 
 	it('should render car stock number', async () => {
@@ -79,9 +79,9 @@ describe('<Show />', () => {
 		const { getByTestId, getByText } = mountContainerWithRouter(testRoute, linkLabel);
 
 		fireEvent.click(getByText(linkLabel));
-		const carDetailContainer = await waitForElement(() => getByTestId('auto1-group-car-stock-number'));
+		const stockNumberElement = await waitForElement(() => getByTestId('auto1-group-car-stock-number'));
 
-		expect(carDetailContainer).toBeDefined();
+		expect(stockNumberElement).toBeDefined();
 	});
 
 	it('should render car mileage', async () => {
@@ -91,9 +91,9 @@ describe('<Show />', () => {
 		const { getByTestId, getByText } = mountContainerWithRouter(testRoute, linkLabel);
 
 		fireEvent.click(getByText(linkLabel));
-		const carDetailContainer = await waitForElement(() => getByTestId('auto1-group-car-mileage'));
+		const mileageElement = await waitForElement(() => getByTestId('auto1-group-car-mileage'));
 
-		expect(carDetailContainer).toBeDefined();
+		expect(mileageElement).toBeDefined();
 	});
 
 	it('should render car fuel type', async () => {
@@ -103,9 +103,9 @@ describe('<Show />', () => {
 		const { getByTestId, getByText } = mountContainerWithRouter(testRoute, linkLabel);
 
 		fireEvent.click(getByText(linkLabel));
-		const carDetailContainer = await waitForElement(() => getByTestId('auto1-group-car-fuel-type'));
+		const fuelTypeElement = await waitForElement(() => getByTestId('auto1-group-car-fuel-type'));
 
-		expect(carDetailContainer).toBeDefined();
+		expect(fuelTypeElement).toBeDefined();
 	});
 
 	it('should render car color', async () => {
@@ -115,9 +115,9 @@ describe('<Show />', () => {
 		const { getByTestId, getByText } = mountContainerWithRouter(testRoute, linkLabel);
 
 		fireEvent.click(getByText(linkLabel));
-		const carDetailContainer = await waitForElement(() => getByTestId('auto1-group-car-color'));
+		const colorElement = await waitForElement(() => getByTestId('auto1-group-car-color'));
 
-		expect(carDetailContainer).toBeDefined();
+		expect(colorElement).toBeDefined();
 	});
 
 	it('should render "Save" favorites <Button />', async () => {
