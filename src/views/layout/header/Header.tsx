@@ -24,7 +24,7 @@ export const navLinks: INavLink[] = [
 
 const Header = (props: RouteComponentProps) => {
 	return (
-		<header>
+		<header data-testid="auto1-group-header">
 			<AppLogo
 				className="home-page-logo"
 				onClick={() => {

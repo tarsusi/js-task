@@ -1,19 +1,44 @@
-// ETA: 2-3 hours
+import * as React from 'react';
+import { Provider } from 'react-redux';
+import { render, cleanup, waitForElement, fireEvent } from '@testing-library/react';
+import IndexContainer from './IndexContainer';
+
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import rootReducer from '../../../store/reducers/rootReducer';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+afterEach(cleanup);
+
+export const mountContainerWithRouter = (pathToMatch: string = '/') => {
+	const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
+	return render(
+		<Provider store={store}>
+			<Router>
+				<Switch>
+					<Route to={pathToMatch} component={IndexContainer} />
+				</Switch>
+			</Router>
+			,
+		</Provider>,
+	);
+};
+
 describe('<Index />', () => {
 	it('should not render Welcome!', () => {
-		expect(false).toBe(true);
-	});
+		const { queryByText } = mountContainerWithRouter('/');
+		const element = queryByText('Welcome!');
 
-	it('should render <Header />', () => {
-		expect(false).toBe(true);
-	});
-
-	it('should render <Footer /> at the bottom', () => {
-		expect(false).toBe(true);
+		expect(element).toBeNull();
 	});
 
 	it('should render <NavFilter />', () => {
-		expect(false).toBe(true);
+		const { queryByTestId } = mountContainerWithRouter('/');
+		const navFilter = queryByTestId('auto1-group-nav-filter');
+
+		expect(navFilter).toBeDefined();
 	});
 
 	it('should change address bar to selected values on "Filter" press', async () => {
@@ -33,31 +58,53 @@ describe('<Index />', () => {
 	});
 
 	it('should render sort <Select /> by manufacturer or color', () => {
-		expect(false).toBe(true);
+		const { getByText } = mountContainerWithRouter('/');
+		const sortByLabel = getByText('Sort by');
+		expect(sortByLabel).toBeDefined();
+
+		const sortByPlaceholder = getByText('None');
+		expect(sortByPlaceholder).toBeDefined();
 	});
 
-	it('should render "10 of 100 results"', () => {
-		expect(false).toBe(true);
+	it('should render "10 of 1000 results"', async () => {
+		const { getByText } = mountContainerWithRouter('/');
+		const resultText = await waitForElement(() => getByText('Showing 10 of 1000 results'));
+
+		expect(resultText).toBeDefined();
 	});
 
-	it('should render <List /> of cars', () => {
-		expect(false).toBe(true);
+	it('should render <List /> of cars', async () => {
+		const { getAllByTestId } = mountContainerWithRouter('/');
+		const carListContainer = await waitForElement(() => getAllByTestId('auto1-group-car-list-item'));
+
+		expect(carListContainer.length).toBe(10);
 	});
 
 	it('should render favorite cars first', () => {
 		expect(false).toBe(true);
 	});
 
-	it('should render cars manufacturer and model name', () => {
-		expect(false).toBe(true);
+	it('should render cars manufacturer and model name', async () => {
+		const { getAllByTestId } = mountContainerWithRouter('/');
+		const carNames = await waitForElement(() => getAllByTestId('auto1-group-car-name'));
+
+		expect(carNames.length).toBeGreaterThan(1);
 	});
 
-	it('should render cars stock number, mileage, fuel type and color', () => {
-		expect(false).toBe(true);
+	it('should render cars stock number, mileage, fuel type and color', async () => {
+		const { getAllByTestId } = mountContainerWithRouter('/');
+		const carFeatures = await waitForElement(() => getAllByTestId('auto1-group-car-features'));
+
+		expect(carFeatures.length).toBeGreaterThan(1);
 	});
 
-	it('when click on "View details" should navigate to show car page', () => {
-		expect(false).toBe(true);
+	it('when click on "View details" should navigate to show car page', async () => {
+		const { getAllByText } = mountContainerWithRouter('/');
+		const viewDetailsButton = await waitForElement(() => getAllByText('View details'));
+
+		fireEvent.click(viewDetailsButton[0]);
+
+		expect(window.location.pathname).toBe('/0/detail');
 	});
 
 	describe('should stick elements on scroll or resize', () => {

@@ -40,7 +40,7 @@ class NavFilter extends React.Component<NavFilterProps, NavFilterState> {
 		const { colors, manufacturers } = this.props;
 
 		return (
-			<aside className="nav-filter-container">
+			<aside className="nav-filter-container" data-testid="auto1-group-nav-filter">
 				<label className="nav-filter-label">Color</label>
 				<Select
 					className="nav-filter-select"
