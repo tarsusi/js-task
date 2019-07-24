@@ -85,7 +85,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 
 		return (
 			car &&
-			error && (
+			!error && (
 				<div className="car-details-container" data-testid="auto1-group-car-details">
 					<div className="car-picture-container">
 						<img

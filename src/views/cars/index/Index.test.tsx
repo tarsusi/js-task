@@ -13,9 +13,9 @@ import '../../../styles/main.scss';
 
 afterEach(cleanup);
 
-export const mountContainerWithRouter = (pathToMatch: string = '/') => {
-	const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
+export const mountContainerWithRouter = (pathToMatch: string = '/') => {
 	return render(
 		<Provider store={store}>
 			<Router>
@@ -55,8 +55,16 @@ describe('<Index />', () => {
    ?manufacturer=
    ?
   */
+		const initialSearchText = window.location.search;
 
-		expect(false).toBe(true);
+		const { getByText } = mountContainerWithRouter('/');
+		const filterButton = getByText('Filter');
+
+		fireEvent.click(filterButton);
+
+		const lastSearchText = window.location.search;
+
+		expect(initialSearchText).not.toBe(lastSearchText);
 	});
 
 	it('should render sort <Select /> by manufacturer or color', () => {
