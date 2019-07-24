@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { HOME_PAGE, SHOW_PAGE, NOT_FOUND_PAGE } from '../../../common/constants/routeNames';
 
-// afterEach(cleanup);
+afterEach(cleanup);
 
 export const mountContainerWithRouter = (testRoute: string, linkLabel: string) => {
 	const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
@@ -34,8 +34,6 @@ export const mountContainerWithRouter = (testRoute: string, linkLabel: string) =
 };
 
 describe('<Show />', () => {
-	afterEach(cleanup);
-
 	it('should redirect to 404 if car is not found', async () => {
 		const linkLabel = 'Click me for testing routing';
 		const testRoute = '/1001/detail';

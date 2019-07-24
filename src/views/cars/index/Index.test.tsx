@@ -8,10 +8,6 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import IndexContainer from './IndexContainer';
-import Header from '../../layout/header/Header';
-import NavFilter from '../../layout/nav-filter/NavFilter';
-
-import { getColors, getManufacturers } from '../../../store/actions/navFilterActions';
 
 import '../../../styles/main.scss';
 

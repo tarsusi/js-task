@@ -18,7 +18,7 @@ const initialState: ICarReducerState = {
 	cars: [],
 	totalCarsCount: 0,
 	totalPageCount: 1,
-	error: false,
+	error: true,
 };
 
 const favourites = (state = initialState, action: CarAction) => {

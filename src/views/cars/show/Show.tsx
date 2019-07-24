@@ -31,6 +31,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 
 	componentDidUpdate(prevProps: ShowProps) {
 		if (this.props.error && !prevProps.error) {
+			console.log('NOT FOUND TO REDIRECT');
 			this.props.history.push(NOT_FOUND_PAGE);
 		}
 	}
@@ -77,14 +78,14 @@ class Show extends React.Component<ShowProps, ShowState> {
 	};
 
 	render() {
-		const { car } = this.props;
+		const { car, error } = this.props;
 
 		const carName = generateCarName(car);
 		const carFeatures = generateCarFeatures(car);
 
 		return (
 			car &&
-			car.stockNumber >= 0 && (
+			error && (
 				<div className="car-details-container" data-testid="auto1-group-car-details">
 					<div className="car-picture-container">
 						<img
